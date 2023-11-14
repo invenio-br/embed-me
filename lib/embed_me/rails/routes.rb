@@ -18,10 +18,8 @@ module ActionDispatch::Routing
     # will produce following routes:
     #
     #   path_private     GET   /path_private(.:format)        application#path_private
-    #   path_embed       GET   /path_embed(.:format)          application#path_embed
     #   embed_path_embed GET   /embed/path_embed(.:format)    application#path_embed {:embedded=>true}
     def embeddable
-      yield
       scope EmbedMe.scope_name.to_s, as: EmbedMe.scope_name.to_s, embedded: true do
         yield
       end
